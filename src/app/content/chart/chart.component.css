@@ -8,7 +8,14 @@ google-chart {
     display: flex;
     justify-content: space-around;
 }
-.element{
+.details.small-device{
+    width: auto;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.element {
     font-size: larger;
     margin: auto;
     align-items: center;

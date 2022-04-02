@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChartType } from "angular-google-charts";
 import { HttpCollectionsService } from 'src/app/http-collections.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-chart',
@@ -8,7 +9,8 @@ import { HttpCollectionsService } from 'src/app/http-collections.service';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-  constructor(private httpCollectionsService:HttpCollectionsService) { }
+  constructor(private httpCollectionsService:HttpCollectionsService,
+    private responsive: BreakpointObserver) { }
   lastValue:number = 0;
   type: ChartType = ChartType.LineChart;
   data:any;
@@ -55,8 +57,32 @@ export class ChartComponent implements OnInit {
   ];
   width = 1200;
   height = 400;
+  small_device:boolean = false;
   @Input() asset: string;
   ngOnInit(): void {
+    this.responsive.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium])
+      .subscribe(result => {
+        const breakpoints = result.breakpoints;
+        this.width = 1200
+        this.small_device = false;
+        console.log("dupa");
+        if (breakpoints[Breakpoints.XSmall]) {
+          this.width = 400;
+          this.small_device = true;
+        }
+        else if (breakpoints[Breakpoints.Small]) {
+          this.width = 550;
+          this.small_device = true;
+        }
+        else if (breakpoints[Breakpoints.Medium]) {
+          this.width = 900;
+          this.small_device = true;
+        }
+    
+      });
     this.reload(30);
   }
   reload(days:number):void{

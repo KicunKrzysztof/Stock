@@ -7,7 +7,7 @@
    [height]="height"
    [title]="asset | uppercase">
 </google-chart>
-<div class="details">
+<div class="details" [ngClass]="{'small-device': small_device}">
     <div class="element">
         <button mat-stroked-button (click)="reload(5)">5d</button>
         <button mat-stroked-button (click)="reload(30)">1m</button>

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class HttpCollectionsService {
   constructor(private http: HttpClient) { }
-  url = '';
+  url = '';//http://localhost:8080 for development
   getCollection(collection:string, from:string):Observable<[]>{
     return this.http.get<[]>(`${this.url}/${collection}/${from}`)
   }

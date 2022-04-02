@@ -1,0 +1,23 @@
+<google-chart #chart
+   [type]="type"
+   [data]="data"
+   [options]="options"
+   [columns]="cols"
+   [width]="width"
+   [height]="height"
+   [title]="asset | uppercase">
+</google-chart>
+<div class="details">
+    <div class="element">
+        <button mat-stroked-button (click)="reload(5)">5d</button>
+        <button mat-stroked-button (click)="reload(30)">1m</button>
+        <button mat-stroked-button (click)="reload(180)">6m</button>
+        <button mat-stroked-button (click)="reload(360)">1y</button>
+        <button mat-stroked-button (click)="reload(1800)">5y</button>
+        <button mat-stroked-button (click)="reload(18000)">max</button>
+    </div>
+    <div class="element">
+        Last value: {{this.lastValue.toFixed(2)}}
+    </div>
+</div>
+<mat-divider></mat-divider>

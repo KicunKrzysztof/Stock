@@ -1,0 +1,15 @@
+google-chart {
+    margin: auto;
+}
+
+.details {
+    width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+.element{
+    font-size: larger;
+    margin: auto;
+    align-items: center;
+}

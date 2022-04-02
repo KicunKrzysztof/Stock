@@ -1,0 +1,22 @@
+<mat-tab-group mat-align-tabs="center" mat-stretch-tabs dynamicHeight>
+    <mat-tab label="Stocks">
+        <div *ngFor="let asset of this.stocks">
+            <app-chart [asset]="asset"></app-chart>
+        </div>
+    </mat-tab>
+    <mat-tab label="Crypto">
+        <div *ngFor="let asset of this.crypto">
+            <app-chart [asset]="asset"></app-chart>
+        </div>
+    </mat-tab>
+    <mat-tab label="Commodities">
+        <div *ngFor="let asset of this.commodities">
+            <app-chart [asset]="asset"></app-chart>
+        </div>
+    </mat-tab>
+    <mat-tab label="Currencies">
+        <div *ngFor="let asset of this.currencies">
+            <app-chart [asset]="asset"></app-chart>
+        </div>
+    </mat-tab>
+</mat-tab-group>

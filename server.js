@@ -47,4 +47,4 @@ setInterval(()=>{
 
 setInterval(()=>{
   update.updateRarely();
-}, 86400000)//86400000 - 24h
+}, 43200000)//86400000 - 24h 43200000-12h

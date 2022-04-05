@@ -68,7 +68,6 @@ export class ChartComponent implements OnInit {
         const breakpoints = result.breakpoints;
         this.width = 1200
         this.small_device = false;
-        console.log("dupa");
         if (breakpoints[Breakpoints.XSmall]) {
           this.width = 400;
           this.small_device = true;

@@ -116,7 +116,7 @@ function updateFromEOD(symbol, collection){
       })
 }
 
-module.exports = {
+var self = module.exports = {
     updateOften: function(){
         updateFromAlpha("BTC", "USD", "btcusd");
         updateFromAlpha("ETH", "USD", "ethusd");
@@ -129,5 +129,25 @@ module.exports = {
         updateFromEOD("GDAXI.INDX", "dax");
         updateFromEOD("GSPC.INDX", "sp500");
         updateFromEOD("ASX.INDX", "ftse");
+    },
+
+    checkRarelyUpdate: function(){
+      var currDate = new Date();
+      if (currDate.getHours() < 11)
+        return;
+        const dbConnect = dbo.getDb();
+        dbConnect.collection('dax')
+        .find({})
+        .sort({date: -1})
+        .limit(1)
+        .toArray(function (err, dbArray) {
+          if (err) {
+            console.log("error in checkRarelyUpdate")
+          } else {
+            lastDbDate = new Date(dbArray[0].date)
+            if (lastDbDate.getDate() != currDate.getDate())
+              self.updateRarely();
+          }
+        });
     }
 }

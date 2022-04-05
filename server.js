@@ -39,12 +39,15 @@ dbo.connectToServer(function (err) {
   app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
   });
+  
+  update.checkRarelyUpdate();
+
+  setInterval(()=>{
+    update.updateOften();
+  }, 1800000)// 1800000 - 30 min
+  
+  setInterval(()=>{
+    update.updateRarely();
+  }, 18000000)//86400000 - 24h 43200000-12h 18000000 -5h
 });
 
-setInterval(()=>{
-  update.updateOften();
-}, 1800000)// 1800000 - 30 min
-
-setInterval(()=>{
-  update.updateRarely();
-}, 18000000)//86400000 - 24h 43200000-12h 18000000 -6h

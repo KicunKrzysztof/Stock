@@ -128,7 +128,7 @@ var self = module.exports = {
         updateFromCommodity();
         updateFromEOD("GDAXI.INDX", "dax");
         updateFromEOD("GSPC.INDX", "sp500");
-        updateFromEOD("ASX.INDX", "ftse");
+        updateFromEOD("FTSE.INDX", "ftse");
     },
 
     checkRarelyUpdate: function(){
